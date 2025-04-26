@@ -1,13 +1,12 @@
 import axios from 'axios';
 import ApiConfig from './ApiConfig';
 
-// Get API URL strictly from environment variable without fallback
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-// Get other configuration from centralized ApiConfig
+
 const { IS_DEV, IS_PROD, ENABLE_LOGGING } = ApiConfig;
 
-// Simple logging utility - now enabled for development
 const logApiCall = (method, endpoint, success = true, data = null) => {
   if (IS_DEV && ENABLE_LOGGING) {
     const style = success ? 'color: green; font-weight: bold' : 'color: red; font-weight: bold';

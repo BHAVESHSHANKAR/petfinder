@@ -1,0 +1,336 @@
+.backButtonContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.navBackButtonContainer {
+  position: absolute;
+  top: 80px; /* Positioned below the navbar */
+  left: 20px;
+  z-index: 10;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #222222;
+  border: none;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.backButton:hover {
+  background: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 6rem 2rem 2rem;
+  background: #FFFFFF;
+  position: relative;
+  width: 100%;
+  background-image: linear-gradient(135deg, rgba(255, 127, 80, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 127, 80, 0.05) 50%, rgba(255, 127, 80, 0.05) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+}
+
+/* Removing the ::before pseudo-element to match the register page background */
+/* 
+.loginContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 0;
+}
+*/
+
+.contentRow {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.cardContainer {
+  width: 100%;
+  max-width: 450px;
+}
+
+.loginCard {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border-top: 4px solid #FF7F50;
+  border-bottom: 4px solid #3498DB;
+  background: #ffffff;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.loginCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.animationColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.animationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.animationCaption {
+  text-align: center;
+  margin-top: -30px;
+  color: #222222;
+}
+
+.animationCaption h3 {
+  color: #FF7F50;
+  margin-bottom: 8px;
+}
+
+.animationCaption p {
+  color: #3498DB;
+}
+
+.formWrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.formHeader h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.formFooter {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.formLogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.formLogo img {
+  height: 60px;
+  width: auto;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pageTitle {
+  margin-bottom: 8px !important;
+  color: #1890ff;
+  font-weight: 600 !important;
+  font-size: 24px !important;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  margin-bottom: 24px !important;
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+.submitButton {
+  height: 48px;
+  border-radius: 30px;
+  background: #FF7F50;
+  color: #FFFFFF;
+  border: none;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 127, 80, 0.2);
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #E86A3E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 127, 80, 0.3);
+}
+
+.createAccountButton {
+  height: 48px;
+  border-radius: 30px;
+  border: 1.5px solid #3498DB;
+  color: #3498DB;
+  background: #ffffff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.createAccountButton:hover {
+  background: #AED6F1;
+  color: #2874A6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.passwordResetLink {
+  color: #1890ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.passwordResetLink:hover {
+  color: #096dd9;
+  text-decoration: underline;
+}
+
+.formDivider {
+  margin: 16px 0;
+}
+
+.helpText {
+  font-size: 14px;
+  color: #666;
+}
+
+.homeLink {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.inputField {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.inputField:hover, .inputField:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 767px) {
+  .loginContainer {
+    padding: 5rem 1rem 1rem;
+  }
+  
+  .contentRow {
+    flex-direction: column-reverse;
+  }
+  
+  .animationColumn {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .animationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    position: relative;
+  }
+  
+  .cardContainer {
+    width: 100%;
+  }
+
+  .formHeader h2 {
+    font-size: 24px;
+  }
+
+  .passwordReset {
+    flex-direction: column;
+  }
+}
+
+/* Tablet responsive styles */
+@media (min-width: 768px) and (max-width: 991px) {
+  .animationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 4rem 1rem 1rem;
+  }
+  
+  .backButtonContainer {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .navBackButtonContainer {
+    top: 60px;
+    left: 10px;
+  }
+  
+  .backButton {
+    padding: 0 12px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .loginCard {
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .formHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .formHeader h2 {
+    font-size: 18px !important;
+  }
+
+  .submitButton, 
+  .createAccountButton {
+    height: 40px;
+  }
+
+  /* Handle the password reset link row for very small screens */
+  .passwordReset {
+    flex-direction: column;
+  }
+} 

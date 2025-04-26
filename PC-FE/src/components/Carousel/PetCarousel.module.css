@@ -1,0 +1,259 @@
+/* Pet Carousel Section Styles */
+.carouselSection {
+  position: relative;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9f2f9 100%);
+  overflow: hidden;
+}
+
+.carouselBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,20 C35,15 40,15 45,20 C50,25 50,30 45,35 C40,40 35,40 30,35 C25,30 25,25 30,20 Z" fill="%23FFD8CC" opacity="0.2"/></svg>');
+  background-size: 100px 100px;
+  opacity: 0.3;
+  z-index: 0;
+  animation: patternMove 60s linear infinite;
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+.carouselContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.carousel {
+  margin-bottom: 40px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.carouselSlide {
+  height: 500px;
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carouselImage {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .carouselImage {
+  transform: scale(1.05);
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 20px;
+  color: white;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.imageCaption h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.carouselText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.carouselText h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #FF7F50;
+}
+
+.carouselText p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  background: #f8f9fa;
+  border-radius: 16px;
+}
+
+.loadingContainer p {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #555;
+}
+
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  background: #f0f2f5;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .carouselSection {
+    padding: 60px 0;
+  }
+  
+  .carouselSlide {
+    height: 400px;
+  }
+  
+  .carouselImage {
+    height: 400px;
+  }
+  
+  .loadingContainer {
+    height: 400px;
+  }
+  
+  .imagePlaceholder {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselSection {
+    padding: 40px 0;
+  }
+  
+  .carouselSlide {
+    height: 300px;
+  }
+  
+  .carouselImage {
+    height: 300px;
+  }
+  
+  .loadingContainer {
+    height: 300px;
+  }
+  
+  .imagePlaceholder {
+    height: 300px;
+  }
+  
+  .imageCaption h3 {
+    font-size: 20px;
+  }
+  
+  .carouselText h2 {
+    font-size: 28px;
+  }
+  
+  .carouselText p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carouselSection {
+    padding: 30px 0;
+  }
+  
+  .carouselSlide {
+    height: 250px;
+  }
+  
+  .carouselImage {
+    height: 250px;
+  }
+  
+  .loadingContainer {
+    height: 250px;
+  }
+  
+  .imagePlaceholder {
+    height: 250px;
+  }
+  
+  .imageCaption {
+    padding: 15px;
+  }
+  
+  .imageCaption h3 {
+    font-size: 18px;
+  }
+  
+  .carouselText h2 {
+    font-size: 24px;
+  }
+  
+  .carouselText p {
+    font-size: 14px;
+  }
+}
+
+/* Custom carousel dots */
+:global(.ant-carousel .slick-dots) {
+  bottom: 20px;
+}
+
+:global(.ant-carousel .slick-dots li button) {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+:global(.ant-carousel .slick-dots li.slick-active button) {
+  background: #FF7F50;
+}
+
+/* Animation for carousel */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel {
+  animation: fadeIn 1s ease-out;
+}

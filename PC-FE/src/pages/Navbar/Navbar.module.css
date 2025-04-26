@@ -1,0 +1,155 @@
+/* Navbar Module CSS */
+
+/* Logo styles */
+.logo {
+  display: flex; 
+  align-items: center; 
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: #222222;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logoEmoji {
+  margin-left: 8px;
+  font-size: 1.25rem;
+}
+
+/* Container styles */
+.navbarContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px 0;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 2px solid #FF7F50; /* Changed to thin orange border */
+  border-radius: 50px;
+  height: 60px;
+  transition: all 0.3s ease;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* Button styles */
+.navButton {
+  transition: all 0.3s ease;
+}
+
+.navButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #FF7F50 !important;
+}
+
+.registerButton {
+  background: #FF7F50;
+  border: none;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(255, 127, 80, 0.2);
+  transition: all 0.3s ease;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.registerButton:hover {
+  background: #E86A3E;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 127, 80, 0.3);
+}
+
+/* Menu styles */
+.menu {
+  border: none; 
+  background: transparent;
+  border-radius: 30px;
+  padding: 0 10px;
+  min-width: 120px;
+  display: flex !important;
+  align-items: center;
+  margin-right: 10px;
+}
+
+/* Avatar styles */
+.userAvatar {
+  background-color: #FF7F50;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.userAvatar:hover {
+  transform: scale(1.05);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .navbar {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 0 15px;
+    border-radius: 30px;
+  }
+}
+
+/* Global overrides - must be used with :global() */
+:global(.ant-menu-horizontal > .ant-menu-item:hover),
+:global(.ant-menu-horizontal > .ant-menu-submenu:hover) {
+  color: #FF7F50 !important;
+  background-color: rgba(255, 127, 80, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+}
+
+:global(.ant-menu-horizontal) {
+  border: none !important;
+  line-height: 46px;
+}
+
+:global(.ant-menu-item) {
+  display: flex !important;
+  align-items: center !important;
+}
+
+:global(.ant-menu-item.ant-menu-item-selected) {
+  color: #FF7F50 !important;
+}
+
+:global(.ant-menu-horizontal > .ant-menu-item-selected::after),
+:global(.ant-menu-horizontal > .ant-menu-item::after),
+:global(.ant-menu-horizontal > .ant-menu-submenu::after) {
+  border-bottom: 2px solid #FF7F50 !important;
+} 

@@ -4,7 +4,7 @@
  */
 
 // Get API URL from environment variables with fallback
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Determine environment
 const IS_DEV = import.meta.env.DEV === true;

@@ -6,7 +6,7 @@ import ApiRequest from './ApiRequest';
 import ApiConfig from './ApiConfig';
 
 // Get API URL directly from environment variable with fallback
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Authentication Endpoints

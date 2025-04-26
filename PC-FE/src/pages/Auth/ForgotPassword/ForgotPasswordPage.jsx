@@ -37,6 +37,8 @@ import {
 } from '@ant-design/icons';
 import styles from './ForgotPasswordPage.module.css';
 import tortoiseAnimation from '../../../assets/tortoise.json';
+import axios from 'axios';
+import { ApiRequest } from '../../../api';
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;
@@ -103,37 +105,10 @@ const ForgotPasswordPage = () => {
     try {
       console.log('Verifying email exists:', email);
       
-      // Make an API call to the backend to verify the email exists
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-      const response = await fetch(`${apiUrl}/auth/verify-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email.toLowerCase() }),
-      });
+      // Make an API call to the backend using ApiRequest
+      const response = await ApiRequest.post('/auth/verify-email', { email: email.toLowerCase() });
       
-      const data = await response.json();
-      
-      if (response.status === 404) {
-        // Email not found in the database
-        console.log('Email not found in database');
-        toast.error(data.message || 'Email not found in our database');
-        setCurrentStep('email'); // Go back to email input
-        setCurrentStepNumber(0);
-        return false;
-      }
-      
-      if (!response.ok) {
-        // Other API error
-        console.log('API error:', data.message);
-        toast.error(data.message || 'Error verifying email');
-        setCurrentStep('email'); // Go back to email input
-        setCurrentStepNumber(0);
-        return false;
-      }
-      
-      if (data.success) {
+      if (response.data && response.data.success) {
         console.log('Email verified successfully');
         toast.success('Email verified successfully!');
         
@@ -199,30 +174,14 @@ const ForgotPasswordPage = () => {
     try {
       console.log('Resetting password for:', userEmail);
       
-      // Make an API call to the backend to reset the password
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-      const response = await fetch(`${apiUrl}/auth/recover-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          email: userEmail.toLowerCase(),
-          newPassword: passwordToUse,
-          securityAnswers: useSecurityQuestions ? securityAnswers : undefined
-        }),
+      // Make an API call to the backend using ApiRequest
+      const response = await ApiRequest.post('/auth/recover-password', {
+        email: userEmail.toLowerCase(),
+        newPassword: passwordToUse,
+        securityAnswers: useSecurityQuestions ? securityAnswers : undefined
       });
       
-      const data = await response.json();
-      
-      if (!response.ok) {
-        // API error
-        console.log('API error:', data.message);
-        toast.error(data.message || 'Error resetting password');
-        return false;
-      }
-      
-      if (data.success) {
+      if (response.data && response.data.success) {
         console.log('Password successfully reset');
         setRecoveredPassword(passwordToUse);
         toast.success('Password has been reset successfully!');

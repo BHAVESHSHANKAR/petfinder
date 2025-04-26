@@ -4,11 +4,13 @@
  */
 import ApiRequest from './ApiRequest';
 import ApiEndpoints from './ApiEndpoints';
+import ApiConfig from './ApiConfig';
 
 export {
   ApiRequest,
-  ApiEndpoints
+  ApiEndpoints,
+  ApiConfig
 };
 
 // Default export for simpler imports
-export default ApiEndpoints; 
+export default ApiEndpoints;

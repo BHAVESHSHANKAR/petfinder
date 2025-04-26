@@ -3,6 +3,10 @@
  * This file contains all the API endpoints used in the application
  */
 import ApiRequest from './ApiRequest';
+import ApiConfig from './ApiConfig';
+
+// Get API URL directly from environment variable with fallback
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 /**
  * Authentication Endpoints
@@ -35,6 +39,8 @@ const AuthEndpoints = {
  */
 const ApiEndpoints = {
   auth: AuthEndpoints,
+  // Add API URL for direct access if needed
+  apiUrl: API_URL
 };
 
-export default ApiEndpoints; 
+export default ApiEndpoints;

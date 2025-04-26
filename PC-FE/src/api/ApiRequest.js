@@ -1,14 +1,11 @@
 import axios from 'axios';
+import ApiConfig from './ApiConfig';
 
-// Get API URL from environment variables with fallback
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Get API URL strictly from environment variable without fallback
+const API_URL = import.meta.env.VITE_API_URL;
 
-// Determine environment
-const IS_DEV = import.meta.env.DEV === true;
-const IS_PROD = import.meta.env.PROD === true;
-
-// Enable logging for development debugging
-const ENABLE_LOGGING = IS_DEV && true;
+// Get other configuration from centralized ApiConfig
+const { IS_DEV, IS_PROD, ENABLE_LOGGING } = ApiConfig;
 
 // Simple logging utility - now enabled for development
 const logApiCall = (method, endpoint, success = true, data = null) => {
@@ -30,7 +27,7 @@ if (IS_DEV && ENABLE_LOGGING) {
   console.log('All env vars:', import.meta.env);
 }
 
-// Create axios instance
+// Create axios instance with strict environment variable check
 const apiClient = axios.create({
   baseURL: API_URL,
   headers: {
@@ -45,6 +42,11 @@ const apiClient = axios.create({
 // Request interceptor for adding auth token
 apiClient.interceptors.request.use(
   (config) => {
+    // Verify API URL is set from environment variable
+    if (!API_URL) {
+      throw new Error('VITE_API_URL environment variable is not set. Please check your .env file.');
+    }
+    
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -133,6 +135,16 @@ const ApiRequest = {
    * @returns {Promise} - Response promise
    */
   get: (endpoint, params = {}) => {
+    // Log request attempt
+    if (IS_DEV && ENABLE_LOGGING) {
+      console.log(`%cAttempting GET request to: ${API_URL}${endpoint}`, 'color: #9b59b6');
+    }
+    
+    // Verify API URL is set from environment variable
+    if (!API_URL) {
+      throw new Error('VITE_API_URL environment variable is not set. Please check your .env file.');
+    }
+    
     return apiClient.get(endpoint, { params })
       .then(response => {
         if (response.status >= 400) {
@@ -141,6 +153,10 @@ const ApiRequest = {
         }
         logApiCall('GET', endpoint, true, response.data);
         return response;
+      })
+      .catch(error => {
+        console.error('GET request error:', error);
+        throw error;
       });
   },
 
@@ -151,6 +167,16 @@ const ApiRequest = {
    * @returns {Promise} - Response promise
    */
   post: (endpoint, data = {}) => {
+    // Log request attempt
+    if (IS_DEV && ENABLE_LOGGING) {
+      console.log(`%cAttempting POST request to: ${API_URL}${endpoint}`, 'color: #9b59b6');
+    }
+    
+    // Verify API URL is set from environment variable
+    if (!API_URL) {
+      throw new Error('VITE_API_URL environment variable is not set. Please check your .env file.');
+    }
+    
     return apiClient.post(endpoint, data)
       .then(response => {
         if (response.status >= 400) {
@@ -159,6 +185,10 @@ const ApiRequest = {
         }
         logApiCall('POST', endpoint, true, response.data);
         return response;
+      })
+      .catch(error => {
+        console.error('POST request error:', error);
+        throw error;
       });
   },
 
@@ -169,6 +199,16 @@ const ApiRequest = {
    * @returns {Promise} - Response promise
    */
   put: (endpoint, data = {}) => {
+    // Log request attempt
+    if (IS_DEV && ENABLE_LOGGING) {
+      console.log(`%cAttempting PUT request to: ${API_URL}${endpoint}`, 'color: #9b59b6');
+    }
+    
+    // Verify API URL is set from environment variable
+    if (!API_URL) {
+      throw new Error('VITE_API_URL environment variable is not set. Please check your .env file.');
+    }
+    
     return apiClient.put(endpoint, data)
       .then(response => {
         if (response.status >= 400) {
@@ -177,6 +217,10 @@ const ApiRequest = {
         }
         logApiCall('PUT', endpoint, true, response.data);
         return response;
+      })
+      .catch(error => {
+        console.error('PUT request error:', error);
+        throw error;
       });
   },
 
@@ -187,6 +231,16 @@ const ApiRequest = {
    * @returns {Promise} - Response promise
    */
   delete: (endpoint, data = {}) => {
+    // Log request attempt
+    if (IS_DEV && ENABLE_LOGGING) {
+      console.log(`%cAttempting DELETE request to: ${API_URL}${endpoint}`, 'color: #9b59b6');
+    }
+    
+    // Verify API URL is set from environment variable
+    if (!API_URL) {
+      throw new Error('VITE_API_URL environment variable is not set. Please check your .env file.');
+    }
+    
     return apiClient.delete(endpoint, { data })
       .then(response => {
         if (response.status >= 400) {
@@ -195,6 +249,10 @@ const ApiRequest = {
         }
         logApiCall('DELETE', endpoint, true, response.data);
         return response;
+      })
+      .catch(error => {
+        console.error('DELETE request error:', error);
+        throw error;
       });
   },
 };
